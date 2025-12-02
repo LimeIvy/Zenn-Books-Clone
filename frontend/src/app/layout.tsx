@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Zen_Maru_Gothic } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
-const zenMaruGothic = Zen_Maru_Gothic({
-  variable: "--font-zen-maru-gothic",
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-zen-old-mincho",
   weight: "500",
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${zenMaruGothic.className}`}
+        className={`${notoSansJP.className}`}
       >
         {children}
       </body>
