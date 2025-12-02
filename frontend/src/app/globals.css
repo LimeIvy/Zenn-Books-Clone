@@ -3,3 +3,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@theme {
+  --color-primary: #3EA8FF;
+  --color-primary-focus: #008CFF;
+}
