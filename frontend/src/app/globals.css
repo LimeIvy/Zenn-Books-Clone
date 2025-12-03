@@ -5,6 +5,8 @@ body {
 }
 
 @theme {
-  --color-primary: #3EA8FF;
-  --color-primary-focus: #008CFF;
+  --color-button-primary: #0868CE;
+  --color-button-primary-hover: #0F83FD;
+  --color-background: #081D35;
+  --color-background-soft: #0B2C53;
 }
