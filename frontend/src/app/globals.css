@@ -3,3 +3,10 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@theme {
+  --color-button-primary: #0868CE;
+  --color-button-primary-hover: #0F83FD;
+  --color-background: #081D35;
+  --color-background-soft: #0B2C53;
+}
