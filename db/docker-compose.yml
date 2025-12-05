@@ -1,9 +1,8 @@
-version: '3'
+version: "3"
 
 services:
   db:
-    image: mysql:8
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    build: .
     container_name: zenn_clone_db
     restart: always
     environment:
@@ -13,8 +12,8 @@ services:
       MYSQL_PASSWORD: ${DB_PASS}
       TZ: ${TZ}
     ports:
-        - ${DB_PORT}:3306
+      - ${DB_PORT}:3306
     volumes:
-        - db-store:/var/lib/mysql
+      - db-store:/var/lib/mysql
 volumes:
   db-store:
