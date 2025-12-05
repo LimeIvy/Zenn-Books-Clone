@@ -17,6 +17,9 @@ importers:
       mysql2:
         specifier: ^3.15.3
         version: 3.15.3
+      uuidv7:
+        specifier: ^1.1.0
+        version: 1.1.0
     devDependencies:
       '@types/node':
         specifier: ^24.10.1
@@ -86,6 +89,10 @@ packages:
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
+  uuidv7@1.1.0:
+    resolution: {integrity: sha512-2VNnOC0+XQlwogChUDzy6pe8GQEys9QFZBGOh54l6qVfwoCUwwRvk7rDTgaIsRgsF5GFa5oiNg8LqXE3jofBBg==}
+    hasBin: true
+
 snapshots:
 
   '@hono/swagger-ui@0.5.2(hono@4.10.7)':
@@ -141,3 +148,5 @@ snapshots:
   sqlstring@2.3.3: {}
 
   undici-types@7.16.0: {}
+
+  uuidv7@1.1.0: {}
