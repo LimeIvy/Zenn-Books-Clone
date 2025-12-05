@@ -17,6 +17,8 @@ app.get('/ui', swaggerUI({ url: '/doc' }))
 
 const routes = app.route('/books', books).route('/chapters', chapters)
 
+app.get('/', (c) =>c.text('Hello!'))
+
 export type AppType = typeof routes
 
 export default {

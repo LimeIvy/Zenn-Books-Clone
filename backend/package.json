@@ -5,9 +5,11 @@
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.5.2",
+    "@hono/zod-validator": "^0.7.5",
     "hono": "^4.10.7",
     "mysql2": "^3.15.3",
-    "uuidv7": "^1.1.0"
+    "uuidv7": "^1.1.0",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@types/node": "^24.10.1"

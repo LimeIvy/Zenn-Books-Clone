@@ -1,6 +1,9 @@
 import { Hono } from "hono";
 import { connection } from "./db";
 import { uuidv7 } from "uuidv7";
+import { zValidator } from '@hono/zod-validator'
+
+import { booksSchema } from "./schema"
 
 export const books = new Hono()
   /* 本一覧の取得 */
@@ -16,8 +19,8 @@ export const books = new Hono()
     }
   })
   /* 本の新規追加 */
-  .post("/", async (c) => {
-    const body = await c.req.json();
+  .post("/", zValidator('json', booksSchema), async (c) => {
+    const body = await c.req.valid('json');
     const title = body.title;
     const auther = body.auther;
     const description = body.description;
@@ -53,7 +56,7 @@ export const books = new Hono()
   })
 
   /* 本の詳細情報の更新 */
-  .put("/:id", async (c) => {
+  .put("/:id", zValidator('json', booksSchema), async (c) => {
     const id = c.req.param("id");
     const body = await c.req.json();
     const title = body.title;
