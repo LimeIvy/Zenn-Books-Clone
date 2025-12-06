@@ -1,0 +1,35 @@
+DROP SCHEMA IF EXISTS zenn_clone_db;
+
+CREATE SCHEMA zenn_clone_db;
+
+USE zenn_clone_db;
+
+DROP TABLE IF EXISTS books;
+
+CREATE TABLE
+  books (
+    id BINARY(16),
+    title VARCHAR(150) NOT NULL,
+    auther VARCHAR(100) NOT NULL,
+    description VARCHAR(2000) NOT NULL DEFAULT '',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    INDEX (auther)
+  );
+
+DROP TABLE IF EXISTS chapters;
+
+CREATE TABLE
+  chapters (
+    id INT AUTO_INCREMENT,
+    book_id BINARY(16) NOT NULL,
+    chapter_number INT NOT NULL,
+    name VARCHAR(150) NOT NULL DEFAULT '新しいチャプター',
+    content TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (book_id) REFERENCES books (id) ON DELETE CASCADE,
+    UNIQUE KEY (book_id, chapter_number)
+  );
