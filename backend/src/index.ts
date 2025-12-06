@@ -15,7 +15,7 @@ app.use('*', cors({
 app.get('/doc', (c) => c.json(openApiDoc))
 app.get('/ui', swaggerUI({ url: '/doc' }))
 
-const routes = app.route('/books', books).route('/chapters', chapters)
+const routes = app.route('/books', books).route('/books/:book_id/chapters', chapters)
 
 app.get('/', (c) =>c.text('Hello!'))
 

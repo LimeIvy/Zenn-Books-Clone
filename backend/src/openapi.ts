@@ -47,13 +47,13 @@ export const openApiDoc = {
         },
       },
     },
-    "/books/{id}": {
+    "/books/{book_id}": {
       get: {
         summary: "本の詳細情報の取得・全チャプター取得",
         tags: ["Books"],
         parameters: [
           {
-            name: "id",
+            name: "book_id",
             in: "path",
             required: true,
             schema: {
@@ -72,7 +72,7 @@ export const openApiDoc = {
         tags: ["Books"],
         parameters: [
           {
-            name: "id",
+            name: "book_id",
             in: "path",
             required: true,
             schema: {
@@ -112,7 +112,7 @@ export const openApiDoc = {
         tags: ["Books"],
         parameters: [
           {
-            name: "id",
+            name: "book_id",
             in: "path",
             required: true,
             schema: {
@@ -127,10 +127,145 @@ export const openApiDoc = {
         },
       },
     },
-    "/chapters": {
-      get: {
-        summary: "chapter",
+    "/books/{book_id}/chapters": {
+      post: {
+        summary: "チャプターの新規作成",
         tags: ["Chapters"],
+        parameters: [
+          {
+            name: "book_id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  chapter_number: {
+                    type: "integer",
+                  },
+                  name: {
+                    type: "string",
+                  },
+                  content: {
+                    type: "string",
+                  },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "OK",
+          },
+        },
+      },
+    },
+    "/books/{book_id}/chapters/{chapter_number}": {
+      get: {
+        summary: "チャプター内容の取得",
+        tags: ["Chapters"],
+        parameters: [
+          {
+            name: "book_id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "chapter_number",
+            in: "path",
+            required: true,
+            schema: {
+              type: "integer",
+            },
+          },
+        ],
+        responses: {
+          "200": {
+            description: "OK",
+          },
+        },
+      },
+      put: {
+        summary: "チャプター内容の更新",
+        tags: ["Chapters"],
+        parameters: [
+          {
+            name: "book_id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "chapter_number",
+            in: "path",
+            required: true,
+            schema: {
+              type: "integer",
+            },
+          },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  chapter_number: {
+                    type: "integer",
+                  },
+                  name: {
+                    type: "string",
+                  },
+                  content: {
+                    type: "string",
+                  },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "OK",
+          },
+        },
+      },
+      delete: {
+        summary: "チャプターの削除",
+        tags: ["Chapters"],
+        parameters: [
+          {
+            name: "book_id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "chapter_number",
+            in: "path",
+            required: true,
+            schema: {
+              type: "integer",
+            },
+          },
+        ],
         responses: {
           "200": {
             description: "OK",
