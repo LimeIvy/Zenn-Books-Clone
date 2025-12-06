@@ -4,7 +4,7 @@ import Button from "@/features/shared/components/ui/Button";
 export default function Header() {
 
   return (
-    <header className="sticky top-0 border-b border-gray-300 bg-background px-6 py-3">
+    <header className="sticky top-0 border-b border-gray-300 bg-background px-6 py-3 z-10">
       <div className="flex items-center justify-between">
         <Link href="/">
           <h1 className="text-xl font-bold">Zenn Books Clone</h1>
