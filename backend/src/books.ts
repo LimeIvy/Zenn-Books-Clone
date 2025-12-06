@@ -31,7 +31,7 @@ export const books = new Hono()
         `INSERT INTO books (id, title, auther, description) VALUES (UUID_TO_BIN(?), ?, ?, ?);`,
         [id, title, auther, description]
       );
-      return c.json({ message: "Success" });
+      return c.json({ id: id, message: "Success" });
     } catch (error) {
       console.error(error);
       return c.json({ message: "Database error" }, 500);
