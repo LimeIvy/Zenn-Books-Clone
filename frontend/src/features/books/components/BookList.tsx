@@ -8,7 +8,11 @@ export default function Books() {
   const { books, isLoading, isError } = useBooks();
 
   if (isLoading) {
-    return <div>読み込み中...</div>;
+    return (
+      <div className="mt-50 flex items-center justify-center">
+        <div className="animate-spin h-10 w-10 border-4 border-blue-500 rounded-full border-t-transparent"></div>
+      </div>
+    );
   }
 
   if (isError) {
