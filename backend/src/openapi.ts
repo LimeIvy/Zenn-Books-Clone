@@ -1,5 +1,3 @@
-import { request } from "http";
-
 export const openApiDoc = {
   openapi: "3.0.0",
   info: {
@@ -11,6 +9,7 @@ export const openApiDoc = {
     "/books": {
       get: {
         summary: "本一覧の取得",
+        tags: ["Books"],
         responses: {
           "200": {
             description: "OK",
@@ -19,6 +18,7 @@ export const openApiDoc = {
       },
       post: {
         summary: "本の新規追加",
+        tags: ["Books"],
         requestBody: {
           required: true,
           content: {
@@ -50,6 +50,7 @@ export const openApiDoc = {
     "/books/{id}": {
       get: {
         summary: "本の詳細情報の取得・全チャプター取得",
+        tags: ["Books"],
         parameters: [
           {
             name: "id",
@@ -68,6 +69,38 @@ export const openApiDoc = {
       },
       put: {
         summary: "本の詳細情報の更新",
+        tags: ["Books"],
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  title: {
+                    type: "string",
+                  },
+                  auther: {
+                    type: "string",
+                  },
+                  description: {
+                    type: "string",
+                  },
+                },
+              },
+            },
+          },
+        },
         responses: {
           "200": {
             description: "OK",
@@ -76,6 +109,17 @@ export const openApiDoc = {
       },
       delete: {
         summary: "本の削除",
+        tags: ["Books"],
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
         responses: {
           "200": {
             description: "OK",
@@ -86,6 +130,7 @@ export const openApiDoc = {
     "/chapters": {
       get: {
         summary: "chapter",
+        tags: ["Chapters"],
         responses: {
           "200": {
             description: "OK",
@@ -94,4 +139,15 @@ export const openApiDoc = {
       },
     },
   },
+  tags: [
+    {
+      name: "Books",
+      description:
+        "本の新規作成、一覧取得、詳細情報の取得、更新、削除などを行う。",
+    },
+    {
+      name: "Chapters",
+      description: "本の全チャプターの取得、追加、更新、削除などを行う。",
+    },
+  ],
 };
