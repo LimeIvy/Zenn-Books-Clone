@@ -3,14 +3,15 @@
 import { FaRegUserCircle } from "react-icons/fa";
 import Link from "next/link";
 import { useBooks } from "../hooks/useBooks";
+import Spinner from "../../../features/shared/components/ui/Spinner";
 
-export default function Books() {
+export default function BookList() {
   const { books, isLoading, isError } = useBooks();
 
   if (isLoading) {
     return (
       <div className="mt-50 flex items-center justify-center">
-        <div className="animate-spin h-10 w-10 border-4 border-blue-500 rounded-full border-t-transparent"></div>
+        <Spinner size={10} />
       </div>
     );
   }
