@@ -9,4 +9,27 @@ body {
   --color-button-primary-hover: #0F83FD;
   --color-background: #081D35;
   --color-background-soft: #0B2C53;
+  --color-editor-background: #0D223A;
+}
+
+/* EasyMDEのスタイル変更 */
+.CodeMirror {
+  background-color: var(--color-editor-background) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.CodeMirror-cursor {
+  border-left: 1px solid #ffffff !important;
+}
+
+/* エディタ内はフォントサイズを変更しない */
+.CodeMirror [class*="cm-header"] {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+}
+
+/* Markdownプレビューの背景色 */
+.markdown-body {
+  background-color: var(--color-editor-background) !important;
 }

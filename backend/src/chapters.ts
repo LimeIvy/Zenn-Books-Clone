@@ -44,14 +44,16 @@ export const chapters = new Hono()
   .get("/:chapter_number", zValidator("param", querySchema), async (c) => {
     const book_id = c.req.param("book_id");
     const chapter_number = c.req.param("chapter_number");
-
+    console.log("book_id", book_id);
+    console.log("chapter_number", chapter_number);
     try {
       const chapters = await connection.query(
         `SELECT name, content FROM chapters WHERE book_id = UUID_TO_BIN(?) AND chapter_number = ?;`,
         [book_id, chapter_number]
       );
 
-      return c.json(chapters[0]);
+      const rows = chapters[0];
+      return c.json(Array.isArray(rows) ? rows[0] : rows);
     } catch (error) {
       console.error(error);
       return c.json({ message: "Database error" }, 500);

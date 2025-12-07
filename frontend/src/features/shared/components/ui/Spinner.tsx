@@ -4,14 +4,13 @@ interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const Spinner: FC<SpinnerProps> = ({ children, className, ...props }) => {
+const Spinner: FC<SpinnerProps> = ({ children, className, size, ...props }) => {
   const spinnerClasses =
     "animate-spin border-4 border-blue-500 rounded-full border-t-transparent " +
-    `w-${props.size} h-${props.size} ` +
     className;
 
   return (
-    <div className={spinnerClasses} {...props}>
+    <div className={spinnerClasses} style={size ? { width: `${size}px`, height: `${size}px` } : undefined} {...props}>
       {children}
     </div>
   );
