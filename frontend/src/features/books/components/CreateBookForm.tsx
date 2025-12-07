@@ -25,7 +25,7 @@ export default function CreateBookForm() {
       });
       const data = await res.json();
       if (data && "id" in data) {
-        router.push(`/books/${data.id}`);
+        router.push(`/books/${data.id}/edit`);
       }
     } catch (error) {
       console.error("本の作成に失敗しました:", error);

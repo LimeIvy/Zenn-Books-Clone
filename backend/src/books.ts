@@ -48,7 +48,8 @@ export const books = new Hono()
         [id]
       );
 
-      return c.json(book[0]);
+      const rows = book[0];
+      return c.json(Array.isArray(rows) ? rows[0] : rows);
     } catch (error) {
       console.error(error);
       return c.json({ message: "Database error" }, 500);
