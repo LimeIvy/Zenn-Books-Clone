@@ -5,12 +5,12 @@ import { Book } from "../types/book";
 const fetcher = async (id: string): Promise<Book | undefined> => {
   const res = await client.books[":id"].$get({ param: { id } });
   const data = await res.json();
-  
+  console.log(data);
   return data as Book;
 };
 
 export const useBook = (id: string) => {
-  const { data, error, isLoading } = useSWR<Book | undefined>(
+  const { data, error, isLoading, mutate } = useSWR<Book | undefined>(
     id,
     fetcher
   );
@@ -19,5 +19,6 @@ export const useBook = (id: string) => {
     book: data,
     isLoading,
     isError: error,
+    mutate,
   };
 };
