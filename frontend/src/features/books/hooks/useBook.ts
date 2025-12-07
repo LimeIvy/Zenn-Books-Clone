@@ -2,7 +2,8 @@ import useSWR from "swr";
 import { client } from "@/features/shared/utils/client";
 import { Book } from "../types/book";
 
-const fetcher = async (id: string): Promise<Book | undefined> => {
+const fetcher = async (key: string): Promise<Book | undefined> => {
+  const id = key.replace("book-", "");
   const res = await client.books[":id"].$get({ param: { id } });
   const data = await res.json();
   console.log(data);
@@ -11,14 +12,14 @@ const fetcher = async (id: string): Promise<Book | undefined> => {
 
 export const useBook = (id: string) => {
   const { data, error, isLoading, mutate } = useSWR<Book | undefined>(
-    id,
+    `book-${id}`,
     fetcher
   );
 
   return {
     book: data,
-    isLoading,
-    isError: error,
-    mutate,
+    isBookLoading: isLoading,
+    isBookError: error,
+    mutateBook: mutate,
   };
 };
