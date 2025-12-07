@@ -47,6 +47,19 @@ export default function EditBookDetail() {
     }
   };
 
+  const handleDelete = async () => {
+    const result = confirm("本を削除しますか？");
+    if (!result) {
+      return;
+    }
+    try {
+      await client.books[":id"].$delete({ param: { id: bookId } });
+      router.push("/books");
+    } catch (error) {
+      console.error("本の削除に失敗しました:", error);
+      alert("本の削除に失敗しました");
+    }
+  };
   const handleAddChapter = async () => {
     // 次のチャプター番号を設定
     const nextChapterNumber = (chapters?.length ?? 0) + 1;
@@ -117,7 +130,11 @@ export default function EditBookDetail() {
     <div className="flex flex-col items-center justify-center w-full px-[15%]">
       <form onSubmit={handleSubmit} className="w-full flex flex-col items-center justify-center relative">
         <div className="w-full flex justify-end mb-4">
-          <Button type="submit">更新</Button>
+          <div className="flex items-center justify-center gap-2">
+            <Button type="submit">保存</Button>
+            <Button type="button" onClick={handleDelete} className="bg-red-500 hover:bg-red-600">削除</Button>
+          </div>
+
         </div>
         {/* 本のタイトルと説明 */}
         <div className="flex flex-col items-center justify-center w-full">
